@@ -6,7 +6,7 @@ const yeniUrun = {
 };
 
 // Sunucuya "Bunu kaydet" (POST) emri gönderiyoruz
-fetch("http://localhost:5000/urunler", {
+fetch("/urunlerhttp://localhost:5000", {
   method: "POST",
   headers: {
     "Content-Type": "application/json",

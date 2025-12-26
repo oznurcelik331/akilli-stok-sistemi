@@ -14,7 +14,9 @@ function App() {
   // Sunucudan listeyi çeken fonksiyon
   const verileriGetir = async () => {
     try {
-      const response = await fetch("http://localhost:5000/urunler");
+      const response = await fetch(
+        "https://akilli-stok-sistemi.onrender.com/urunler"
+      );
       const data = await response.json();
       setUrunler(data);
     } catch (err) {
@@ -27,11 +29,14 @@ function App() {
     e.preventDefault();
     try {
       const body = { urun_adi: urunAdi, stok_adedi: stok, fiyat: fiyat };
-      const response = await fetch("http://localhost:5000/urunler", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(body),
-      });
+      const response = await fetch(
+        "https://akilli-stok-sistemi.onrender.com/urunler",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(body),
+        }
+      );
 
       if (response.ok) {
         alert("✅ Ürün Başarıyla Eklendi!");
@@ -49,9 +54,12 @@ function App() {
   const urunSil = async (id) => {
     if (window.confirm("Bu ürünü silmek istediğinize emin misiniz?")) {
       try {
-        const response = await fetch(`http://localhost:5000/urunler/${id}`, {
-          method: "DELETE",
-        });
+        const response = await fetch(
+          `https://akilli-stok-sistemi.onrender.com/urunler/${id}`,
+          {
+            method: "DELETE",
+          }
+        );
 
         if (response.ok) {
           // Ekranda filtreleme yaparak state'i güncelle (Performans için)
